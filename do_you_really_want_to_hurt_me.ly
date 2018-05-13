@@ -8,20 +8,26 @@ http://www.notreble.com/buzz/wp-content/uploads/2018/04/Do-You-Really-Want-to-Hu
   title = "DO YOU REALLY WANT TO HURT ME?"
 }
 
+chordsIntro = \chords {
+  R1*8 | \break
+  R1*8 | \break
+}
+chordsChorus = \chords {
+  g2 d | e1:m | g2 d | e1:m | \break
+  c2 g | a1:m | b:m | b2:m b2:m/e | \break
+}
+chordsVerse = \chordsChorus
+
 <<
 \chords {
   % 1 to 16
-  R1*8 | \break
-  R1*8 | \break
+  \chordsIntro
 
-  % 17 to 20
-  g2 d | e1:m | g2 d | e1:m | \break
-  % 21 to 24
-  c2 g | a1:m | b:m | b2:m b2:m/e | \break
-  % 25 to 28
-  g2 d | e1:m | g2 d | e1:m | \break
-  % 29 to 32
-  c2 g | a1:m | b:m | b2:m b2:m/e | \break
+  % 17 to 24
+  \chordsChorus
+
+  % 25 to 32
+  \chordsVerse
 }
 
 \relative d {
