@@ -19,10 +19,14 @@ chordsChorus = \chords {
 chordsVerse = \chordsChorus
 chordsOutro = \chords {
   g2 d | e1:m | g2 d | e1:m | \break
-  c2 g | a1:m | b:m | R2 | \break
+  c2 g | a1:m | b:m | R1 | \break
+}
+chordsBridge = \chords {
+  bes1 | R1 | aes1 | \break
+  R1 | g:m | R1 | \break
 }
 
-bassRunOne = \relative d {
+bassRunOne = {
   g16 g d8 g, g r8. d'16 fis[ fis r d] |
   e8[ e] d[ e] r4 r8 d |
   g16 g d8 g, g r8. d'16 fis[ fis r d] |
@@ -51,7 +55,23 @@ bassLineOutro = \relative d {
   a8[ a] g a r4 a8 ais |
   b8[ b] a b r2 |
   \time 2/2
-  \tuplet 3/2 {fis'4 g a} |
+  \tuplet 3/2 {fis' g a} | \break
+  \time 4/4
+}
+bassBridgeRunOne = {
+  bes16 bes f8 bes, bes~ bes4. bes8 |
+}
+bassBridgeRunTwo = {
+  bes2. r8 g'8 |
+}
+bassLineBridge = \relative f {
+  \bassBridgeRunOne
+  \bassBridgeRunTwo |
+  \bassBridgeRunOne | \break
+
+  \bassBridgeRunTwo |
+  \bassBridgeRunOne |
+  \bassBridgeRunTwo | \break
 }
 
 <<
@@ -67,6 +87,12 @@ bassLineOutro = \relative d {
 
   % 33 to 40
   \chordsOutro
+
+  % 41 to 46
+  \chordsBridge
+
+  % 47 to 54
+  \chordsVerse
 }
 
 \relative d {
@@ -85,6 +111,14 @@ bassLineOutro = \relative d {
 
   % 33 to 40
   \bassLineOutro
+
+  % 41 to 46
+  \key ees \major
+  \bassLineBridge
+
+  % 47 to 54
+  \key g \major
+  \bassLineOne
 }
 >>
 
