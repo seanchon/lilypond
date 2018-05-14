@@ -36,6 +36,14 @@ bassLineOne = \relative d {
   b8[ b] a[ b] r2 |
   b4. e8~ e4~ e8. d16 | \break
 }
+bassLineTwo = \relative d {
+  \bassRunOne
+
+  c16[ c b8] a g r4 g8 gis |
+  a[ a] g[ a] r4 <a c'>8 <ais cis'> |
+  <b d'>2. r16 b' fis d |
+  b4. e8~ e4~ e8. d16 | \break
+}
 bassLineOutro = \relative d {
   \bassRunOne
 
@@ -43,7 +51,7 @@ bassLineOutro = \relative d {
   a8[ a] g a r4 a8 ais |
   b8[ b] a b r2 |
   \time 2/2
-  fis'4 g a |
+  \tuplet 3/2 {fis'4 g a} |
 }
 
 <<
@@ -73,7 +81,7 @@ bassLineOutro = \relative d {
   \bassLineOne
 
   % 25 to 32
-  \bassLineOne
+  \bassLineTwo
 
   % 33 to 40
   \bassLineOutro
