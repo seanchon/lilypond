@@ -17,17 +17,33 @@ chordsChorus = \chords {
   c2 g | a1:m | b:m | b2:m b2:m/e | \break
 }
 chordsVerse = \chordsChorus
+chordsOutro = \chords {
+  g2 d | e1:m | g2 d | e1:m | \break
+  c2 g | a1:m | b:m | R2 | \break
+}
 
-bassLineOne = \relative d {
+bassRunOne = \relative d {
   g16 g d8 g, g r8. d'16 fis[ fis r d] |
   e8[ e] d[ e] r4 r8 d |
   g16 g d8 g, g r8. d'16 fis[ fis r d] |
   e8[ e] d[ e] r4 r8 g, | \break
+}
+bassLineOne = \relative d {
+  \bassRunOne
 
   c16 c b8 a g r4 g8 gis |
   a8[ a] g[ a] r4 a8 ais |
-  b[ b] a[ b] r2 |
+  b8[ b] a[ b] r2 |
   b4. e8~ e4~ e8. d16 | \break
+}
+bassLineOutro = \relative d {
+  \bassRunOne
+
+  c16 c b8 a g g[ a] b a~ |
+  a8[ a] g a r4 a8 ais |
+  b8[ b] a b r2 |
+  \time 2/2
+  fis'4 g a |
 }
 
 <<
@@ -40,6 +56,9 @@ bassLineOne = \relative d {
 
   % 25 to 32
   \chordsVerse
+
+  % 33 to 40
+  \chordsOutro
 }
 
 \relative d {
@@ -55,6 +74,9 @@ bassLineOne = \relative d {
 
   % 25 to 32
   \bassLineOne
+
+  % 33 to 40
+  \bassLineOutro
 }
 >>
 
