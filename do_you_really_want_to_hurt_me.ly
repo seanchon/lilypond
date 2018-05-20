@@ -64,6 +64,7 @@ bassBridgeRunOne = {
 bassBridgeRunTwo = {
   bes2. r8 g'8 |
 }
+
 bassLineBridge = \relative f {
   \bassBridgeRunOne
   \bassBridgeRunTwo |
@@ -74,53 +75,74 @@ bassLineBridge = \relative f {
   \bassBridgeRunTwo | \break
 }
 
-<<
-\chords {
-  % 1 to 16
-  \chordsIntro
+\score {
+  \new Staff <<
+    \chords {
+      % 1 to 16
+      \chordsIntro
 
-  % 17 to 24
-  \chordsChorus
+      % 17 to 24
+      \chordsChorus
 
-  % 25 to 32
-  \chordsVerse
+      % 25 to 32
+      \chordsVerse
 
-  % 33 to 40
-  \chordsOutro
+      % 33 to 40
+      \chordsOutro
 
-  % 41 to 46
-  \chordsBridge
+      % 41 to 46
+      \chordsBridge
 
-  % 47 to 54
-  \chordsVerse
+      % 47 to 54
+      \chordsVerse
+    }
+
+    \new Voice \relative d {
+      \voiceOne
+      \clef bass
+      \time 4/4
+      \key g \major
+      \set midiInstrument = #"electric bass (pick)"
+
+      % 1 to 16 bassLineIntro
+      R1*8 | \break
+      R1*7 | r2\fermata e4-> e8.-> d16 | \break
+
+      % 17 to 24
+      \bassLineOne
+
+      % 25 to 32
+      \bassLineTwo
+
+      % 33 to 40
+      \bassLineOutro
+
+      % 41 to 46
+      \key ees \major
+      \bassLineBridge
+
+      % 47 to 54
+      \key g \major
+      \bassLineOne
+    }
+  >>
+  \layout { }
+  \midi {
+    \context {
+      \Staff
+      \remove "Staff_performer"
+    }
+    \context {
+      \Voice
+      \consists "Staff_performer"
+    }
+    \context {
+      \Score
+      tempoWholesPerMinute = #(ly:make-moment 50 2)
+    }
+  }
 }
 
-\relative d {
-  \clef bass
-  \time 4/4
-  \key g \major
-  % 1 to 16 bassLineIntro
-  R1*8 | \break
-  R1*7 | r2\fermata e4-> e8.-> d16 | \break
-
-  % 17 to 24
-  \bassLineOne
-
-  % 25 to 32
-  \bassLineTwo
-
-  % 33 to 40
-  \bassLineOutro
-
-  % 41 to 46
-  \key ees \major
-  \bassLineBridge
-
-  % 47 to 54
-  \key g \major
-  \bassLineOne
-}
->>
 
 
 \version "2.18.2"  % necessary for upgrading to future LilyPond versions.
